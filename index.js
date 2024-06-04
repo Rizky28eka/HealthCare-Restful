@@ -2,12 +2,14 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import route from "./routes/doctorRoute.js"; // Updated import
+import cors from "cors";
+import route from "./routes/doctorRoute.js";
 
 const app = express();
+dotenv.config();
 
 app.use(bodyParser.json());
-dotenv.config();
+app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 const MONGOURL = process.env.MONGO_URL;
@@ -20,6 +22,17 @@ mongoose
       console.log(`Server is running on port ${PORT}`);
     });
   })
-  .catch((error) => console.log(error));
+  .catch((error) => console.log("Database connection error:", error));
 
-app.use("/api/doctors", route); // Updated route path
+app.use("/api/doctors", route);
+
+// Tambahkan log untuk melihat rute yang aktif
+app._router.stack.forEach(function (r) {
+  if (r.route && r.route.path) {
+    console.log(r.route.path);
+  }
+});
+
+app.use((req, res, next) => {
+  res.status(404).send("Endpoint not found");
+});

@@ -6,6 +6,7 @@ export const createDoctor = async (req, res) => {
     const savedDoctor = await doctorData.save();
     res.status(201).json(savedDoctor);
   } catch (error) {
+    console.error("Error creating doctor:", error);
     res.status(500).json({ error: "Internal server error." });
   }
 };
@@ -15,6 +16,7 @@ export const getAllDoctors = async (req, res) => {
     const doctors = await Doctor.find();
     res.json(doctors);
   } catch (error) {
+    console.error("Error fetching doctors:", error);
     res.status(500).json({ error: "Internal server error." });
   }
 };
@@ -27,6 +29,7 @@ export const getDoctorById = async (req, res) => {
     }
     res.json(doctor);
   } catch (error) {
+    console.error("Error fetching doctor by ID:", error);
     res.status(500).json({ error: "Internal server error." });
   }
 };
@@ -43,6 +46,7 @@ export const updateDoctor = async (req, res) => {
     }
     res.json(updatedDoctor);
   } catch (error) {
+    console.error("Error updating doctor:", error);
     res.status(500).json({ error: "Internal server error." });
   }
 };
@@ -55,6 +59,7 @@ export const deleteDoctor = async (req, res) => {
     }
     res.json({ message: "Doctor deleted successfully." });
   } catch (error) {
+    console.error("Error deleting doctor:", error);
     res.status(500).json({ error: "Internal server error." });
   }
 };
