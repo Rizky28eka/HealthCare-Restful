@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
-import route from "./routes/doctorRoute.js";
+import doctorRoute from "./routes/doctorRoute.js";
+import categoryRoute from "./routes/categoryRoute.js";
 
 const app = express();
 dotenv.config();
@@ -24,9 +25,9 @@ mongoose
   })
   .catch((error) => console.log("Database connection error:", error));
 
-app.use("/api/doctors", route);
+app.use("/api/doctors", doctorRoute);
+app.use("/api/categories", categoryRoute);
 
-// Tambahkan log untuk melihat rute yang aktif
 app._router.stack.forEach(function (r) {
   if (r.route && r.route.path) {
     console.log(r.route.path);
