@@ -6,13 +6,12 @@ import cors from "cors";
 import doctorRoute from "./routes/doctorRoute.js";
 import categoryRoute from "./routes/categoryRoute.js";
 
-const app = express();
 dotenv.config();
-
+const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const MONGOURL = process.env.MONGO_URL;
 
 mongoose
@@ -36,4 +35,9 @@ app._router.stack.forEach(function (r) {
 
 app.use((req, res, next) => {
   res.status(404).send("Endpoint not found");
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong!");
 });

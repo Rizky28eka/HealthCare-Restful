@@ -1,5 +1,24 @@
 import mongoose from "mongoose";
 
+const workExperienceSchema = new mongoose.Schema({
+  position: {
+    type: String,
+    required: true,
+  },
+  facility: {
+    type: String,
+    required: true,
+  },
+  duration: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+});
+
 const doctorSchema = new mongoose.Schema({
   fullName: {
     type: String,
@@ -46,9 +65,7 @@ const doctorSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  workHistory: {
-    type: String,
-  },
+  workExperience: [workExperienceSchema],
   certifications: {
     type: [String],
   },
@@ -64,10 +81,40 @@ const doctorSchema = new mongoose.Schema({
   medicalInterests: {
     type: [String],
   },
-  profileMedia: {
+  gender: {
     type: String,
-    default: null,
   },
+  rating: {
+    type: Number,
+    min: 1,
+    max: 5,
+    default: 0,
+  },
+  reviewCount: {
+    type: Number,
+    default: 0,
+  },
+  reviews: [
+    {
+      reviewerName: {
+        type: String,
+        required: true,
+      },
+      rating: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 5,
+      },
+      comment: {
+        type: String,
+      },
+      date: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
 });
 
 const Doctor = mongoose.model("Doctor", doctorSchema);

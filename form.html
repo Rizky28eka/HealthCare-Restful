@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group .rating-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-group .rating-group label {
+            flex: 1;
+            text-align: center;
+        }
+        .form-group .rating-group input {
+            width: auto;
+        }
+        .form-group button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add New Doctor</h2>
+        <form id="doctorForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="practiceLicenseNumber">Practice License Number</label>
+                <input type="text" id="practiceLicenseNumber" name="practiceLicenseNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="specialization">Specialization</label>
+                <input type="text" id="specialization" name="specialization" required>
+            </div>
+            <div class="form-group">
+                <label for="subSpecialization">Sub-Speciali zation</label>
+                <input type="text" id="subSpecialization" name="subSpecialization">
+            </div>
+            <div class="form-group">
+                <label for="educationInstitution">Education Institution</label>
+                <input type="text" id="educationInstitution" name="educationInstitution">
+            </div>
+            <div class="form-group">
+                <label for="graduationYear">Graduation Year</label>
+                <input type="number" id="graduationYear" name="graduationYear">
+            </div>
+            <div class="form-group">
+                <label for="profilePhoto">Profile Photo URL</label>
+                <input type="text" id="profilePhoto" name="profilePhoto">
+            </div>
+            <div class="form-group">
+                <label for="healthcareFacilityName">Healthcare Facility Name</label>
+                <input type="text" id="healthcareFacilityName" name="healthcareFacilityName" required>
+            </div>
+            <div class="form-group">
+                <label for="healthcareFacilityAddress">Healthcare Facility Address</label>
+                <input type="text" id="healthcareFacilityAddress" name="healthcareFacilityAddress" required>
+            </div>
+            <div class="form-group">
+                <label for="practiceHours">Practice Hours</label>
+                <input type="text" id="practiceHours" name="practiceHours">
+            </div>
+            <div class="form-group">
+                <label for="healthcareFacilityContact">Healthcare Facility Contact</label>
+                <input type="text" id="healthcareFacilityContact" name="healthcareFacilityContact">
+            </div>
+            <div class="form-group">
+                <label for="practiceLocation">Practice Location</label>
+                <input type="text" id="practiceLocation" name="practiceLocation">
+            </div>
+            <div class="form-group">
+                <label for="consultationFee">Consultation Fee</label>
+                <input type="number" id="consultationFee" name="consultationFee" required>
+            </div>
+            <div class="form-group">
+                <label for="workHistory">Work History</label>
+                <textarea id="workHistory" name="workHistory"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="certifications">Certifications (comma-separated)</label>
+                <input type="text" id="certifications" name="certifications">
+            </div>
+            <div class="form-group">
+                <label for="professionalMemberships">Professional Memberships (comma-separated)</label>
+                <input type="text" id="professionalMemberships" name="professionalMemberships">
+            </div>
+            <div class="form-group">
+                <label for="scientificPublications">Scientific Publications (comma-separated)</label>
+                <input type="text" id="scientificPublications" name="scientificPublications">
+            </div>
+            <div class="form-group">
+                <label for="languagesSpoken">Languages Spoken (comma-separated)</label>
+                <input type="text" id="languagesSpoken" name="languagesSpoken">
+            </div>
+            <div class="form-group">
+                <label for="medicalInterests">Medical Interests (comma-separated)</label>
+                <input type="text" id="medicalInterests" name="medicalInterests">
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating</label>
+                <div class="rating-group">
+                    <label><input type="radio" name="rating" value="1"> 1</label>
+                    <label><input type="radio" name="rating" value="2"> 2</label>
+                    <label><input type="radio" name="rating" value="3"> 3</label>
+                    <label><input type="radio" name="rating" value="4"> 4</label>
+                    <label><input type="radio" name="rating" value="5"> 5</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="reviews">Reviews</label>
+                <textarea id="reviews" name="reviews" placeholder="" reviewerName\": \"John Doe\", \"rating\": 5, \"comment\": \"Great doctor!\", \"date\": \"2024-06-08\"}]"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Add Doctor</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('doctorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                if (key === 'rating') {
+                    data[key] = parseInt(value);
+                } else if (key === 'reviews') {
+                    try {
+                        data[key] = JSON.parse(value);
+                    } catch (error) {
+                        alert('Invalid JSON format for reviews');
+                        return;
+                    }
+                } else {
+                    data[key] = value;
+                }
+            });
+            fetch('http://localhost:5000/api/doctors', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Doctor added successfully!');
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error adding doctor.');
+            });
+        });
+    </script>
+</body>
+</html>
