@@ -62,7 +62,6 @@ export const deleteCategory = async (req, res) => {
   }
 };
 
-// Optional: Search categories based on query parameters
 export const searchCategories = async (req, res) => {
   try {
     const query = {};
